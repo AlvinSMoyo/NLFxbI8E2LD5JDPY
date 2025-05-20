@@ -37,5 +37,53 @@ This repository contains the full implementation of a machine learning pipeline 
 
 ## 📁 Repository Structure
 
+---
+
+## 📊 Key Modules
+
+### 🔹 TF-IDF Similarity Ranking
+- Measures lexical overlap with target role descriptions
+
+### 🔹 S-BERT Semantic Ranking
+- Captures deeper semantic alignment of candidate profiles
+- Re-ranking simulation based on starred candidate
+
+### 🔹 Word2Vec / GloVe / FastText Benchmarking
+- Compared embeddings to assess sensitivity to phrasing and role structure
+
+### 🔹 Clustering & Profiling
+- KMeans (TF-IDF) for transparent segmentation
+- UMAP + HDBSCAN (exploratory deep clustering)
+
+### 🔹 Suitability Classifier
+- Simulated fit labels (e.g., High/Medium/Low)
+- Trained Random Forest model to score candidate fit
+
+---
+
+## 📷 Visuals
+
+![Re-ranking Dumbbell Chart](./figures/dumbbell_chart.png)  
+*Rank shifts before vs after recruiter feedback*
+
+![Job Title WordCloud](./figures/wordcloud.png)  
+*Most frequent role-related terms*
+
+![TF-IDF Clustering](./figures/cluster_map.png)  
+*Clustered candidate segments based on TF-IDF*
+
+---
+
+## 🧪 Getting Started
+
+```bash
+# 1. Clone the repo
+git clone https://github.com/AlvinSMoyo/NLFxbI8E2LD5JDPY.git
+
+# 2. Install dependencies
+pip install -r requirements.txt
+
+# 3. Open the notebook
+jupyter notebook notebook/Potential_Talents_AI.ipynb
 
 
