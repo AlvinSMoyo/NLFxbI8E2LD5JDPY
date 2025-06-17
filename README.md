@@ -5,23 +5,10 @@
 ![NLP](https://img.shields.io/badge/NLP-Semantic_Search-orange)
 ![LLM](https://img.shields.io/badge/LLM-GPT4%2C%20Qwen%2C%20LLaMa-blueviolet)
 
-This repository contains two complementary approaches to intelligent candidate ranking — both developed during the Apziva AI Residency — showcasing a journey from traditional similarity scoring to LLM-powered fit reasoning.
-
+This repository tackles the challenge of identifying the most suitable job candidates from a large applicant pool — a process often limited by keyword matching and prone to bias. It showcases two complementary solutions I developed during my **Apziva AI Residency:** one using classical similarity scoring methods, and the other leveraging large language models (LLMs) to reason about candidate fit in a more nuanced, human-like manner.
 ---
 
 ## 🧠 Project Versions
-
-### 🔹 Version 1: Scoring-Based Candidate Ranking
-
-The initial pipeline focused on classical NLP and ML techniques to rank candidates:
-- **TF-IDF** lexical scoring
-- **S-BERT**, **Word2Vec**, **GloVe**, and **FastText** semantic embeddings
-- **Clustering** via KMeans (TF-IDF) and UMAP + HDBSCAN (S-BERT)
-- A **Random Forest classifier** trained on simulated fit labels
-
-📝 Notebook: [`notebook/Scoring_Based_Candidate_Ranking.ipynb`](notebook/Scoring_Based_Candidate_Ranking.ipynb)
-
----
 
 ### 🔹 Version 2: POTENTIAL_TALENTS_LLM_Powered_Candidate_Ranking (**Current Focus**)
 
@@ -32,7 +19,19 @@ This advanced pipeline enhances the ranking process by introducing **LLMs** to r
 - **Clustering** with UMAP + HDBSCAN for diversity-aware shortlisting
 - Transparent **thresholding and rationale analysis**
 
-📝 Notebook: [`notebook/POTENTIAL_TALENTS_LLM_Powered_Candidate_Ranking.ipynb`](notebook/LLM_Powered_Candidate_Ranking.ipynb)
+📝 Notebook: [`notebook/POTENTIAL_TALENTS_LLM_Powered_Candidate_Ranking.ipynb`](notebook/POTENTIAL_TALENTS_LLM_Powered_Candidate_Ranking.ipynb)
+
+---
+
+### 🔹 Version 1: Scoring-Based Candidate Ranking
+
+The initial pipeline focused on classical NLP and ML techniques to rank candidates:
+- **TF-IDF** lexical scoring
+- **S-BERT**, **Word2Vec**, **GloVe**, and **FastText** semantic embeddings
+- **Clustering** via KMeans (TF-IDF) and UMAP + HDBSCAN (S-BERT)
+- A **Random Forest classifier** trained on simulated fit labels
+
+📝 Notebook: [`notebook/POTENTIAL_TALENTS_Scoring_Based_Candidate_Ranking.ipynb`](notebook/POTENTIAL_TALENTS_Scoring_Based_Candidate_Ranking.ipynb)
 
 ---
 
@@ -60,15 +59,13 @@ This advanced pipeline enhances the ranking process by introducing **LLMs** to r
 
 ```
 notebook/
-├── Scoring_Based_Candidate_Ranking.ipynb
-├── POTENTIAL_TALENTS_LLM_Powered_Candidate_Ranking.ipynb
+├── POTENTIAL_TALENTS_Scoring_Based_Candidate_Ranking.ipynb ✅ (Version 1) 
+├── POTENTIAL_TALENTS_LLM_Powered_Candidate_Ranking.ipynb  ✅ (Version 2)
 
 figures/
 ├── llm_ranking_heatmap.png
 ├── gpt4o_vs_sbert_scatter.png
-├── avg_scores_by_cluster.png
 ├── tfidf_similarity_matrix.png
-├── glove_similarity_distribution.png
 ├── kmeans_cluster_map.png
 ```
 
@@ -84,9 +81,6 @@ figures/
 #### 🎯 Fit vs Similarity: GPT-4o vs S-BERT
 ![GPT-4o vs S-BERT Scatter](figures/gpt4o_vs_sbert_scatter.png)
 
-#### 🧠 Average Scores by Cluster (UMAP + HDBSCAN)
-![Average Scores by Cluster](figures/avg_scores_by_cluster.png)
-
 ---
 
 ### 🔹 Scoring-Based Pipeline (V1)
@@ -94,11 +88,31 @@ figures/
 #### 📐 TF-IDF Similarity Matrix
 ![TF-IDF Similarity](figures/tfidf_similarity_matrix.png)
 
-#### 🌐 GloVe Similarity Distribution
-![GloVe Similarity](figures/glove_similarity_distribution.png)
-
 #### 🧭 KMeans Clustering of TF-IDF Profiles
 ![KMeans Clusters](figures/kmeans_cluster_map.png)
+
+---
+
+## 🧗‍♂️ Project Reflection
+This two-part journey mirrors how modern AI can evolve recruitment:
+
+- The **first version** grounded us in robust scoring and clustering, surfacing candidates based on textual and semantic alignment using classical NLP techniques.
+
+- The **second version** embraced LLMs to reason about candidate fit, justify decisions, and simulate recruiter feedback — leading to a consensus-driven shortlist supported by both data and domain context.
+
+Together, these approaches demonstrate how AI can go *beyond keywords* — from mechanical scoring to contextual reasoning — ultimately producing a **justified, auditable shortlist of top candidates** from over 100 profiles.
+
+...
+
+## 🔗 Resources
+
+- [GPT-4o by OpenAI](https://openai.com/index/gpt-4o/)
+- [Hugging Face Transformers](https://huggingface.co/docs/transformers/index)
+- [CUDA Toolkit (NVIDIA)](https://developer.nvidia.com/cuda-toolkit)
+- [LLaMa-2 (Meta)](https://ai.meta.com/llama/)
+- [Qwen-1.8B (Alibaba)](https://huggingface.co/Qwen/Qwen-1_8B)
+
+These libraries and tools were instrumental in building the LLM-powered candidate ranking engine.
 
 ---
 
@@ -119,11 +133,4 @@ jupyter notebook notebook/Scoring_Based_Candidate_Ranking.ipynb
 
 ---
 
-## 🧗‍♂️ Project Reflection
-
-This two-part journey mirrors how modern AI can evolve recruitment:
-- The **first version** grounded us in robust scoring and clustering
-- The **second version** embraced LLMs for fit justifications and reranking
-
-Together, they demonstrate how AI can go *beyond keywords* — from scoring to reasoning.
 
