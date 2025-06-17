@@ -65,8 +65,8 @@ notebook/
 figures/
 ├── llm_ranking_heatmap.png
 ├── gpt4o_vs_sbert_scatter.png
-├── tfidf_similarity_matrix.png
-├── kmeans_cluster_map.png
+├── wordcloud.png
+├── cluster_map.png
 ```
 
 ---
@@ -85,11 +85,11 @@ figures/
 
 ### 🔹 Scoring-Based Pipeline (V1)
 
-#### 📐 TF-IDF Similarity Matrix
-![TF-IDF Similarity](figures/tfidf_similarity_matrix.png)
+#### ☁️ NLP Snapshot: Role-Relevant Terminology 
+![Wordcloud](figures/wordcloud.png)
 
 #### 🧭 KMeans Clustering of TF-IDF Profiles
-![KMeans Clusters](figures/kmeans_cluster_map.png)
+![KMeans Clusters](figures/cluster_map.png)
 
 ---
 
