@@ -1,4 +1,5 @@
 # Potential Talents: Beyond Keywords with a Multi-LLM Candidate Ranking Engine
+> An [Apziva](https://www.apziva.com) AI Residency Project
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
