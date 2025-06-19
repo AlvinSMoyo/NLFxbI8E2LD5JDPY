@@ -5,31 +5,31 @@
 ![NLP](https://img.shields.io/badge/NLP-Semantic_Search-orange)
 ![LLM](https://img.shields.io/badge/LLM-GPT4%2C%20Qwen%2C%20LLaMa-blueviolet)
 
-This repository tackles the challenge of identifying the most suitable job candidates from a large applicant pool — a process often limited by keyword matching and prone to bias. It showcases two complementary solutions I developed during my **Apziva AI Residency:** one using classical similarity scoring methods, and the other leveraging large language models (LLMs) to reason about candidate fit in a more nuanced, human-like manner.
+In today's competitive talent market, recruiters are inundated with applications, yet traditional screening methods that rely on rigid keyword matching often overlook high-potential candidates. This repository documents a comprehensive, two-part project designed to solve this problem. Part one establishes a robust baseline using classical machine learning for quantitative scoring and clustering. Part two evolves this approach, leveraging a sophisticated, multi-agent LLM system for nuanced, human-like candidate evaluation. Together, they demonstrate a complete journey from statistical analysis to generative AI reasoning.
 ---
 
 ## 🧠 Project Versions
 
-### 🔹 Version 2: POTENTIAL_TALENTS_LLM_Powered_Candidate_Ranking (**Current Focus**)
+### 🔹 Version 2: POTENTIAL_TALENTS_2_LLM_Powered_Candidate_Ranking (**Current Focus**)
 
 This advanced pipeline enhances the ranking process by introducing **LLMs** to reason about candidate fit:
-- Fit and justification generation using **GPT-4o**, **Qwen-1.8B**, and **LLaMa-2-7B**
-- Multi-model **ranking and reranking consensus**
-- **Human-in-the-loop** simulation via starred candidate reranking
-- **Clustering** with UMAP + HDBSCAN for diversity-aware shortlisting
-- Transparent **thresholding and rationale analysis**
+- Leveraging on a "Committee of AIs": **GPT-4o**, **Qwen**, & **LLaMa-2** to generate nuanced rankings with justifications.
+- Implementing a Tournament-Style Ranking strategy to process candidates in batches, ensuring high-accuracy results from all models.
+- Simulating Recruiter Feedback with a "human-in-the-loop" reranking feature based on a starred or ideal candidate.
+- Validating LLM Reasoning using unsupervised clustering (UMAP + HDBSCAN) to ensure a diverse and relevant shortlist.
+- Fostering Transparency through **thresholding and rationale analysis**
 
-📝 Notebook: [`notebook/POTENTIAL_TALENTS_LLM_Powered_Candidate_Ranking.ipynb`](notebook/POTENTIAL_TALENTS_LLM_Powered_Candidate_Ranking.ipynb)
+📝 Notebook: [`notebook/POTENTIAL_TALENTS_2_LLM_Powered_Candidate_Ranking.ipynb`](notebook/POTENTIAL_TALENTS_LLM_2_Powered_Candidate_Ranking.ipynb)
 
 ---
 
 ### 🔹 Version 1: Scoring-Based Candidate Ranking
 
 The initial pipeline focused on classical NLP and ML techniques to rank candidates:
-- **TF-IDF** lexical scoring
-- **S-BERT**, **Word2Vec**, **GloVe**, and **FastText** semantic embeddings
-- **Clustering** via KMeans (TF-IDF) and UMAP + HDBSCAN (S-BERT)
-- A **Random Forest classifier** trained on simulated fit labels
+- Scoring candidates on lexical relevance using **TF-IDF**
+- Generating deep semantic embeddings using a suite of models including **S-BERT**, **Word2Vec**, **GloVe**, and **FastText**.
+- Identifying distinct talent pools by clustering candidates with KMeans (on **TF-IDF**) and the **UMAP** + **HDBSCAN** pipeline (on **S-BERT**).
+- Training and deploying a **Random Forest classifier** on simulated labels to predict a quantitative 'fit score'.
 
 📝 Notebook: [`notebook/POTENTIAL_TALENTS_Scoring_Based_Candidate_Ranking.ipynb`](notebook/POTENTIAL_TALENTS_Scoring_Based_Candidate_Ranking.ipynb)
 
@@ -47,11 +47,31 @@ The initial pipeline focused on classical NLP and ML techniques to rank candidat
 
 ## 🛠️ Tech Stack
 
-- **Language**: Python 3.x
-- **Libraries**: `pandas`, `scikit-learn`, `nltk`, `sentence-transformers`, `umap-learn`, `hdbscan`, `matplotlib`, `seaborn`, `transformers`, `openai`
-- **Embedding Models**: Sentence-BERT, Word2Vec, GloVe, FastText
-- **LLMs**: GPT-4o (OpenAI), Qwen-1.8B (Alibaba), LLaMa-2-7B (Meta)
-- **Clustering**: KMeans (TF-IDF) and UMAP + HDBSCAN (S-BERT)
+- **Languages & Environment:**
+  - Python 3.11
+  - Google Colab Pro (A100 & L4 GPUs)
+
+- **Libraries & Frameworks:**
+  - `scikit-learn` – ML models, pipelines, evaluation
+  - `sentence-transformers` – S-BERT embeddings
+  - `transformers` – LLM integration (Qwen, LLaMa via Hugging Face)
+  - `gensim` – Pretrained embeddings (Word2Vec, FastText)
+  - `torchtext` – GloVe integration
+  - `nltk` – Text preprocessing for TF-IDF and embeddings
+  - `umap-learn`, `hdbscan` – Dimensionality reduction & clustering
+  - `matplotlib`, `seaborn` – Visualizations
+  - `PyTorch` – Backend for transformers, S-BERT, and deep embeddings
+
+- **Embeddings Used:**
+  - TF-IDF
+  - Sentence-BERT
+  - GloVe (via torchtext)
+  - Word2Vec & FastText (via gensim)
+
+- **LLMs Used:**
+  - GPT-4o (OpenAI)
+  - Qwen-1.8B (Alibaba, Hugging Face)
+  - LLaMa-2-7B (Meta, Hugging Face)
 
 ---
 
@@ -60,7 +80,7 @@ The initial pipeline focused on classical NLP and ML techniques to rank candidat
 ```
 notebook/
 ├── POTENTIAL_TALENTS_Scoring_Based_Candidate_Ranking.ipynb ✅ (Version 1) 
-├── POTENTIAL_TALENTS_LLM_Powered_Candidate_Ranking.ipynb  ✅ (Version 2)
+├── POTENTIAL_TALENTS_2_LLM_Powered_Candidate_Ranking.ipynb  ✅ (Version 2)
 
 figures/
 ├── llm_ranking_heatmap.png
@@ -88,9 +108,20 @@ figures/
 #### ☁️ NLP Snapshot: Role-Relevant Terminology 
 ![Wordcloud](figures/wordcloud.png)
 
-#### 🧭 KMeans Clustering of TF-IDF Profiles
-![KMeans Clusters](figures/cluster_map.png)
+#### 🧭 UMAP Projection with HDBSCAN Clusters
+![UMAP_Clusters](figures/cluster_map.png)
 
+---
+
+## 🏆 Key Outcomes & Impact
+- **Demonstrated Two Complementary Methodologies:** Successfully architected and implemented two distinct, end-to-end pipelines: a **scoring-based system (V1)** that excels at quantitative analysis and a **reasoning-based LLM system (V2)** that provides qualitative, human-like insights.
+
+- **Achieved Full-Funnel Automation:** Both pipelines transform an initial pool of over 100 candidates into a final, data-driven shortlist, proving the viability of automated talent screening to significantly reduce manual effort.
+
+- **Generated Both Quantitative & Qualitative Insights:** The project delivers both numerical 'fit scores' (from V1's classifier) and rich, narrative 'justifications' (from V2's LLMs), providing a holistic and defensible view for hiring managers.
+
+- **Enhanced Decision-Making:** The final output is more than just a ranked list; it's a rich, multi-faceted analysis of the talent pool, complete with model-generated rationale and cluster-based insights for strategic hiring.
+  
 ---
 
 ## 🧗‍♂️ Project Reflection
@@ -126,9 +157,9 @@ git clone https://github.com/AlvinSMoyo/NLFxbI8E2LD5JDPY.git
 pip install -r requirements.txt
 
 # 3. Open the desired notebook
-jupyter notebook notebook/POTENTIAL_TALENTS_LLM_Powered_Candidate_Ranking.ipynb
+jupyter notebook notebook/POTENTIAL_TALENTS_2_LLM_Powered_Candidate_Ranking.ipynb
 # or
-jupyter notebook notebook/Scoring_Based_Candidate_Ranking.ipynb
+jupyter notebook notebook/POTENTIAL_TALENTS_Scoring_Based_Candidate_Ranking.ipynb
 ```
 
 ---
